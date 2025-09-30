@@ -3,7 +3,7 @@ Author: Lucas Burt
 Description: Methods to manipulate and interrogate an array of charaters
 Bugs: Two letter names when attempt to get initals prints two of the last inital, Does not know if there is a middle name if there are multiple, does not work with numbers
 Features: 15 unique functions to interrogate/manipulate an array of charaters 
-Log: 1.0 - initial
+Log: 1.1 - initial
 
 
 
@@ -331,3 +331,4 @@ def main():
 main()
 
     
+

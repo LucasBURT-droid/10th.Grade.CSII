@@ -1,8 +1,8 @@
 '''
-Author:
-Description:
-Bugs:
-Features:
+Author: Lucas Burt 
+Description: Methods to manipulate and interrogate an array of charaters
+Bugs: Two letter names when attempt to get initals prints two of the last inital, Does not know if there is a middle name if there are multiple, does not work with numbers
+Features: 15 unique functions to interrogate/manipulate an array of charaters 
 Log: 1.0 - initial
 
 
@@ -86,7 +86,9 @@ def get_last(name):                                                             
     elif len(names) == 2: 
         return names [1]
     elif len(names) == 3: 
-        return names [2] 
+        return names [2]
+    elif len(names) == 4: 
+        return names [3]
     
         
     
@@ -116,6 +118,7 @@ def get_middle(name):                                                           
     '''
     names = name.split(" ")                                                            # uses the .split function to find the users middle name
     return names[1]
+
 
 def check_hyphen(name):                                                                # checks for hyphen in name + creates subtotals 
     
@@ -282,6 +285,7 @@ def main():
         12 = Get your initals 
         13 = Find the title in your name than display 
         14 = Return full-name as a sorted array of characters 
+        15 = Exit
         
         
         """)
@@ -306,7 +310,7 @@ def main():
         elif menu == "9": 
             print(f'Your name scrambled is: {scramblename(name)}')
         elif menu == "10":
-            print(f'Your name is {is_palidrome(name)}')
+            print(f'pallindrome: {is_palidrome(name)}')
         elif menu == "11": 
             print(f'Your name reversed and displayed is: {reverse_name(name)}')
         elif menu == "12": 
@@ -315,6 +319,8 @@ def main():
             print(f'your title is: {titles(name)}')
         elif menu == "14": 
             print(f'your name in a sorted array is: {sortedarray(name)}')
+        elif menu == "15":
+            break
         else: 
             print("ok")
 

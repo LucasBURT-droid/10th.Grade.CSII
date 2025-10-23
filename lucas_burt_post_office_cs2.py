@@ -5,7 +5,7 @@ Bugs: Unmailable ptype does not always print "unmailable"
 Sources: Google
 Dates: 10.22.25
 Features: 4 unique functions to classify mail by size, calculates postage by class and zones, flags unmailable items, rounds costs to 2 decimals.
-Log: 1.0 - initial
+Log: 1.1 
 
 '''
 
@@ -28,10 +28,12 @@ def getsize(l,w,h):
     elif l + w + h > 84 and l + w + h < 130:                                                #Package
         ptype = 5 
     elif l + h + h + w + w > 84 <= 130:                                                      #Large Package
-        ptype = 6 
+        ptype = 6  
+    elif l + w + h > 130:                                                             # Too large
+        ptype = -1 
     else:                                                                                   #Unmailable 
-        print("UNMAILABLE.")
-        return None
+        ptype = -1 
+        
     return ptype 
 def getzip(zip):
 
@@ -79,6 +81,9 @@ def getcost(ptype, ztype):
         return (2.95 + 0.25 * ztype)
     elif ptype  == 6: 
         return( 3.95 + 0.35 * ztype) 
+    elif ptype == -1:
+        print("UNMAILABLE")
+
 def main():
     counter = 0 
     while counter <5:                               #Loop runs up to 5 times                                                                                                                   
@@ -94,10 +99,8 @@ def main():
 
         ztype = abs(to_zip-from_zip)
         ptype = getsize(l,w,h)
-
         price = getcost(ptype,ztype)
         print(price) 
-    #distance = getzip(zip) - getzip(zip)
     counter = counter+1                     #adds +1 to counter until it hits 5 
 
 main()

@@ -6,7 +6,23 @@
   <title>Post office</title>
   <script>
   
+    /*
+    Author: Lucas Burt 
+    Description: Google web page that calculates the postage cost for different types of mail based on their dimensions and post codes, classifying items into diffrent catagories 
+    Bugs: None to my Knowledge  
+    Sources: Google
+    Dates: 11.11.25
+    Features: 4 unique functions to classify mail by size, calculates postage by class and zones, flags unmailable items, rounds costs to 2 decimals.
+Log: 1.0 - initial
+
+    */
+  
     function getcost(ptype,ztype){
+    /*
+    description - calculates  the  cost  based on the package type and postal zone.
+    args - ptype: package type, ztype: zipcode zone 
+    returns- float: cost of package in $  
+    */
     
     if (ptype == 1)
       {
@@ -37,6 +53,12 @@
     }
     
     function getzip(zip)
+    /*
+    description - gets the  zipcode based on the inputs of user (classifying into diffrent groups/zones)  
+    args - zip: zip code (int) of either the origin or destination.
+    returns- integer from 1-6 based on the zones 
+    */
+
     {
      ztype = 0
     
@@ -57,11 +79,15 @@
     
     return ztype 
     }
-    //close function
-    // During next class goal: get zip distance, then create the calculate function, then print and test
 
 
     function get_type(num1,num2,num3) {
+    /*
+    description - takes in the user input dimensions, classifys them into diffrent types.
+    args - l: length w: width h: hieght 
+    returns- specific package type based on user input
+    */
+    
 
       if (num1 >= 3.5 && num1 <= 4.25 && num2 >=3.5 && num2 <=6 && num3>=.007 && num3 <=.016)
       {
@@ -148,6 +174,6 @@
   <button onclick="main()">Add</button>
 
   <!-- Area to display the result -->
-  <p id="result"></p>
+  <p style="color: white;" id="result"></p>
 </body>
 </html>

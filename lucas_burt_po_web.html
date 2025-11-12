@@ -9,11 +9,11 @@
     /*
     Author: Lucas Burt 
     Description: Google web page that calculates the postage cost for different types of mail based on their dimensions and post codes, classifying items into diffrent catagories 
-    Bugs: Does not go to second decimal if there is a non decimal number. Button is unaccurate
+    Bugs: 
     Sources: Google
     Dates: 11.11.25
     Features: 4 unique functions to classify mail by size, calculates postage by class and zones, flags unmailable items, rounds costs to 2 decimals.
-Log: 1.3
+Log: 1.4
 
     */
   
@@ -151,7 +151,7 @@ Log: 1.3
 
 
       // Display the result inside the <p> tag
-        formatted_price = (price.toPrecision(2)).replace(/^0+/, '')
+        formatted_price = (price.toFixed(2)).replace(/^0+/, '')
       document.getElementById("result").innerText ='Cost: ' + formatted_price;
 
   

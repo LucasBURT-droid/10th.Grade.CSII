@@ -1,0 +1,339 @@
+'''
+Author: Lucas Burt 
+Description: 
+Bugs: 
+Sources: Google, W3 Schools
+Dates: 12.16.25
+Features: 
+
+'''
+
+def f10Row(input):                                       #goal 1
+    
+    '''
+    description - Loads the titanic.csv file and display the first 10 rows.
+    args - the data file representing the titanic data
+    returns- ftf.csv with the column names and the total number of passengers.
+
+    '''
+
+    print("line 2")
+    print(input)
+         
+         
+    tenrows = open("ftf.csv", "w")  
+    input = open("titanic.csv", "r")
+    print(tenrows)   
+                                           
+    try:    
+        counter = 0
+        
+        for line in input:
+            print("10")
+            print(line)
+            if counter == 10:
+                break
+        else:
+            #row = line.strip().split(',') 
+            tenrows.write(line)
+        counter += 1 
+        input.close()
+    except FileNotFoundError:
+        print("Error: 'titanic.csv' file not found.")
+
+def sratecalc():                                         #goal 2 
+
+    '''
+    description - Calculates and prints the overall survival rate.
+    args - None
+    returns- sratecalc.csv showing percentage of passengers who survived
+    '''                                     
+    counter = 0
+    survival_calc_counter = 0
+    input = open("titanic.csv")
+   
+    for line in input:
+        row = line.strip().split(',')
+        if row[1] == '1': 
+            survival_calc_counter += 1 
+            counter +=1 
+        elif row[1] == '0': 
+            counter += 1 
+    print(survival_calc_counter)
+    average = survival_calc_counter / counter
+    print(average)
+    
+    with open('sratecalc.csv', 'w') as input2:
+        input2.write(' survival rate: ')
+        input2.write(str(average))
+
+def gratecalc():                                         #goal 3 
+    
+    '''
+    description - Calculates the survival rate for males and females separately
+    args - None
+    returns- gratecalc.csv showing which gender had a higher survival rate.
+
+    '''
+    
+    male_survived = 0 
+    male_total = 0 
+    female_survived = 0 
+    female_total = 0 
+
+    input = open("titanic.csv")
+    for line in input:
+        #print(line)
+        row = line.strip().split(',')
+        survived = row[1] 
+        
+        sex = row[5] 
+
+        if sex == "male":
+            male_total += 1 
+            if survived == "1": 
+                male_survived += 1 
+
+        elif sex == "female": 
+            female_total += 1 
+            if survived == "1": 
+                female_survived += 1 
+    print(male_survived)
+    print(male_total)
+    print(female_survived)
+    print(female_total)
+   
+    maverage = male_survived / male_total 
+    faverage = female_survived / female_total
+
+    print(f"male percent:{maverage}" )
+    print(f"female percent:{faverage}" ) 
+
+    with open('gratecalc.csv', 'w') as input2:
+        input2.write(' male percent: ')
+        input2.write(str(maverage))
+        input2.write(' female percent: ')
+        input2.write(str(faverage))
+    
+def agestats():                                          #goal 4 
+    
+    '''
+    description - Finds average age of all passengers, average age of survivors vs non-survivors, youngest and oldest passengers
+    args - None
+    returns- agestats.csv with age for all passengers, % age of survivors vs non-survivors, youngest vs. oldest passengers
+    '''
+    
+    total_ages = 0  
+    survivor_age = 0
+    death_age = 0
+    full_count = 0 
+    survivor_count = 0 
+    death_count = 0 
+ 
+    youngest = 0 
+    oldest = 0  
+
+    with open("titanic.csv", "r") as input: 
+        for line in input:
+            row = line.strip().split(',')
+            survived = row[1] 
+            age = row[6] 
+        
+            try: 
+                intage = int(age)
+                total_ages += intage
+                full_count += 1 
+                if survived == '1': 
+                    survivor_age += intage  
+                    survivor_count += 1         
+                else:
+                    death_age += intage  
+                    death_count += 1 
+            except ValueError:
+                pass
+
+    
+        if youngest is 0 or age < youngest: 
+            youngest = age 
+        if oldest is 0 or age > oldest: 
+            oldest = age 
+
+        average_all = total_ages / full_count
+        average_s = survivor_age / survivor_count
+        average_d = death_age / death_count
+
+        with open('agestats.csv', 'w') as input2:
+            input2.write('average age of all: ')
+            input2.write(str(average_all))
+            input2.write('average age of survivors: ')
+            input2.write(str(average_s))
+            input2.write('average age of dead: ')
+            input2.write(str(average_d))
+
+def cbana():                                             #goal 5
+
+    '''
+    description - For each passenger class (1,2,3) calculates survival rate and the average fare paid
+    args - None 
+    returns- cbana.csv with  a summary showing which class had the best survival chances and average fare price 
+    '''
+
+    total_p1 = 0
+    total_p2 = 0 
+    total_p3 = 0 
+    surcs1 = 0 
+    surcs2 = 0 
+    surcs3 = 0 
+    totalfarec1 = 0 
+    totalfarec2 = 0 
+    totalfarec3 = 0
+     
+
+    with open("titanic.csv", "r") as input: 
+            for line in input:
+                row = line.strip().split(',')
+                survived = row[1] 
+        
+                pbclass = row[2] 
+
+                if pbclass == "1":
+                    total_p1 += 1
+                    totalfarec1 += float(row[10]) 
+                    if survived == "1": 
+                        surcs1 += 1 
+                elif pbclass == "2": 
+                    total_p2 += 1 
+                    totalfarec2 += float(row[10]) 
+                    if survived == "1": 
+                        surcs2 += 1 
+                elif pbclass == "3": 
+                    total_p3 += 1 
+                    totalfarec3 += float(row[10]) 
+                    if survived == "1": 
+                        surcs3 += 1 
+            fareaverage1 = totalfarec1 / total_p1
+            fareaverage2 = totalfarec2 / total_p2
+            fareaverage3 = totalfarec3 / total_p3
+            surrate1 = (surcs1 / total_p1)*100
+            surrate2 = (surcs2 / total_p2)*100 
+            surrate3 = (surcs3 / total_p3)*100
+    with open('cbana.csv', 'w') as input2:
+        input2.write(' fare average class 1: ')
+        input2.write(str(fareaverage1))
+        input2.write(' fare average class 2: ')
+        input2.write(str(fareaverage2))
+        input2.write(' fare average class 3: ')
+        input2.write(str(fareaverage3))
+
+        input2.write(' average  survival per class 1: ')
+        input2.write(f'{(surrate1):.2f}')
+        input2.write(' average survival per class 2: ')
+        input2.write(f'{(surrate2):.2f}')
+        input2.write(' average survival per class 3: ')
+        input2.write(f'{(surrate3):.2f}')
+        
+def famspat():                                           #goal 6
+
+    '''
+    description - Analyzes survival rates based on family sizes and determines if traveling alone or with family improved survival chances.
+    args - None
+    returns- famspat.csv with survival rates based on family and deterines travel survival based on subsip 
+    '''
+    
+    
+    family_count = 0
+    family_survivors = 0
+    alone_count = 0
+    alone_survivors = 0
+     
+
+    with open("titanic.csv", "r") as input: 
+        for line in input: 
+            try: 
+                row = line.strip().split(',')
+                survived = row[1] 
+                family = int(row[7]) + int(row[8])                             
+                if family == 0:
+                    alone_count += 1 
+                    if survived == "1": 
+                        alone_survivors += 1   
+                elif family > 0: 
+                    family_count += 1                           #have family; either spouse or bro/sister
+                    if survived == '1': 
+                        family_survivors += 1 
+        
+            except Exception as e:
+                print(e) 
+        favg = (family_survivors / family_count)*100
+        aavg = (alone_survivors / alone_count)*100    
+
+    with open('famspat.csv', 'w') as input2:
+        input2.write(' family percent: ')
+        input2.write(f'{favg:.2f}')
+        input2.write(' alone  percent: ')
+        input2.write(f'{aavg:.2f}')
+   
+def pcount(input):                                       #BONUS
+    
+    '''
+    description - Finds the amount of men and women aboard 
+    args - input 
+    returns- Amount of people per gender
+    '''
+    
+    m_count = 0
+    f_count = 0 
+
+    try:
+        print("line 7")
+        with open('titanic.csv', 'r') as input:
+            header = input.readline().strip().split(',')  # Read the header row
+            sex_index = header.index('Sex')  # Find the index of 'Name' column
+            print(sex_index)
+            for line in input:
+                #print(line)
+                row = line.strip().split(',')
+                sex = row[5]
+                print(sex)
+                if sex == "male":
+                    m_count +=1  
+                elif sex == "female":
+                    f_count +=1 
+            print(m_count)
+            print(f_count)
+    except FileNotFoundError:
+        print("Error: 'titanic.csv' file not found.")
+ 
+def main (): 
+
+    while True:
+            print ("""
+    1 Display first 10 rows 
+    2 Calculate Survival Rate 
+    3 Calculate Survival Rate by gender
+    4 Age Analysis 
+    5 Class-Based Analysis
+    6 Calculate Family Survival Patterns
+    7 Find amount of male and females on ship   
+    8
+    """)
+            option = input("what would you like to do?: ")       
+            
+            if option == '1':  
+                f10Row(input) 
+            elif option == '2':  
+                sratecalc()
+            elif option == '3':  
+                gratecalc() 
+            elif option == '4':  
+                agestats() 
+            elif option == '5': 
+                cbana()
+            elif option == '6':
+                famspat()
+            elif option == '7':
+                pcount(input)
+            else: 
+                print("Invalid Option")
+                break
+main()

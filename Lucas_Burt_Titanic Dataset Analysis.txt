@@ -4,7 +4,7 @@ Description: Goes over statistics based on the excel titanic data
 Bugs: All input functions do not print to .csv, print on terminal
 Sources: Google, W3 Schools
 Dates: 12.16.25
-Features: 
+Features: Extra function for person count by gender.
 
 '''
 
@@ -340,4 +340,5 @@ def main ():
                 break
 
 main()
+
 

@@ -315,7 +315,7 @@ def main ():
     5 Class-Based Analysis
     6 Calculate Family Survival Patterns
     7 Find amount of male and females on ship   
-    8
+    8 Break loop.
     """)
             option = input("what would you like to do?: ")       
             
@@ -333,8 +333,11 @@ def main ():
                 famspat()
             elif option == '7':
                 pcount(input)
+            elif option == '8': 
+                break
             else: 
                 print("Invalid Option")
                 break
 
 main()
+

@@ -1,11 +1,18 @@
 '''
 Author: Lucas Burt 
-Description: Goes over statistics based on the excel titanic data 
+Description: takes statistics based on .csv file, all generate a comprehensive analysis report 
 Bugs: All input functions do not print to .csv, print on terminal
 Sources: Google, W3 Schools
 Dates: 12.16.25
 Features: Extra function for person count by gender.
-
+List of Functions: 
+    1. Displays first 10 rows
+    2. calculates overall survival rate 
+    3. calculates survival rate by gender 
+    4. calculates survival rates based on age + finds the oldest and youngest passengers 
+    5. calculates survival rate based on class 
+    6. Analyzes survival rates based on family sizes 
+    7. (BONUS) finds amount of male and female passengers
 '''
 
 def f10Row(input):                                       #goal 1
@@ -340,5 +347,6 @@ def main ():
                 break
 
 main()
+
 
 

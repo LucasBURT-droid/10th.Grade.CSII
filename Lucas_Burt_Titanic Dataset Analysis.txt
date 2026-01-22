@@ -119,8 +119,10 @@ def gratecalc():                                         #goal 3
     with open('gratecalc.csv', 'w') as input2:
         input2.write(' male percent: ')
         input2.write(str(maverage))
+        input2.write("\n")
         input2.write(' female percent: ')
         input2.write(str(faverage))
+        input2.write("\n")
     
 def agestats():                                          #goal 4 
     
@@ -172,11 +174,13 @@ def agestats():                                          #goal 4
         with open('agestats.csv', 'w') as input2:
             input2.write('average age of all: ')
             input2.write(str(average_all))
+            input2.write("\n")
             input2.write('average age of survivors: ')
             input2.write(str(average_s))
+            input2.write("\n")
             input2.write('average age of dead: ')
             input2.write(str(average_d))
-
+            
 def cbana():                                             #goal 5
 
     '''
@@ -226,18 +230,24 @@ def cbana():                                             #goal 5
             surrate3 = (surcs3 / total_p3)*100
     with open('cbana.csv', 'w') as input2:
         input2.write(' fare average class 1: ')
-        input2.write(str(fareaverage1))
+        input2.write(str(fareaverage1)) 
+        input2.write("\n")
         input2.write(' fare average class 2: ')
         input2.write(str(fareaverage2))
+        input2.write("\n")
         input2.write(' fare average class 3: ')
         input2.write(str(fareaverage3))
+        input2.write("\n")
 
         input2.write(' average  survival per class 1: ')
         input2.write(f'{(surrate1):.2f}')
+        input2.write("\n")
         input2.write(' average survival per class 2: ')
         input2.write(f'{(surrate2):.2f}')
+        input2.write("\n")
         input2.write(' average survival per class 3: ')
         input2.write(f'{(surrate3):.2f}')
+        input2.write("\n")
         
 def famspat():                                           #goal 6
 
@@ -277,8 +287,10 @@ def famspat():                                           #goal 6
     with open('famspat.csv', 'w') as input2:
         input2.write(' family percent: ')
         input2.write(f'{favg:.2f}')
+        input2.write("\n")
         input2.write(' alone  percent: ')
         input2.write(f'{aavg:.2f}')
+        input2.write("\n")
    
 def pcount(input):                                       #BONUS
     
@@ -322,7 +334,7 @@ def main ():
     5 Class-Based Analysis
     6 Calculate Family Survival Patterns
     7 Find amount of male and females on ship   
-    8 Break loop.
+    8 break loop
     """)
             option = input("what would you like to do?: ")       
             
@@ -340,13 +352,9 @@ def main ():
                 famspat()
             elif option == '7':
                 pcount(input)
-            elif option == '8': 
+            elif option == '8':
                 break
             else: 
                 print("Invalid Option")
                 break
-
 main()
-
-
-

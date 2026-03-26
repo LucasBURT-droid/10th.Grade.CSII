@@ -60,7 +60,7 @@ def get_player_move(board, player):
     '''
     while True: 
         try:
-            move_input = input(f"Player {player}, enter your move (row and column): ")
+            move_input = input(f"Player {player}, enter your move (row and column. Ex. '1 1' ): ")
             row_str, col_str = move_input.split()
             row = int(row_str) - 1
             col = int(col_str) - 1
@@ -108,7 +108,7 @@ def is_draw(board):
     returns- True 
     '''
 
-    #if not win after board is full --> "draw" is declared
+    #if no player wins after board is full --> "draw" is declared
     if check_winner(board) is not None:
         return False
     for row in board:
@@ -118,8 +118,15 @@ def is_draw(board):
 
     return True
 
-def clear_board(board):
-    for row in range(0,3):
+def clear_board(board): 
+
+    '''
+    description - clears/resets board (if user chooses to post game) by filling it out with "E" --> signifying an empty space
+    args - 3x3 grid reserve in excel 
+    returns- cleared board 
+    '''
+
+    for row in range(0,3):  
         for col in range(0,3):
             board[row][col] = 'E'
 
@@ -141,7 +148,7 @@ def main():
     while game == True:
         
         while True:
-            display_board(board)
+            display_board(board) #displays board to user, uses pm function to get player's move, and displays on board  
             row, col = get_player_move(board, current_player)
             board[row][col] = current_player
 

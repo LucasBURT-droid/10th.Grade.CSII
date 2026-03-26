@@ -79,7 +79,7 @@ def get_player_move(board, player):
 def check_winner(board):
     '''
     description - Gets win combos from the tuple, either 3x Horizontally, 3x Vertically, 3x Diagonally  
-    args - board: 3x3 grid reserve in excell 
+    args - board: 3x3 grid reserve in excel 
     returns- None (returns winner in main)
     '''
 

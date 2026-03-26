@@ -104,7 +104,7 @@ def check_winner(board):
 def is_draw(board):
     '''
     description - after no detected win combos, this code determines if there is a draw
-    args - 3x3 grid reserve in excell 
+    args - 3x3 grid reserve in excel
     returns- True 
     '''
 

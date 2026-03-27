@@ -104,7 +104,7 @@ def check_winner(board):
 def is_draw(board):
     '''
     description - after no detected win combos, this code determines if there is a draw
-    args - 3x3 grid reserve in excel
+    args - 3x3 grid reserve in excel 
     returns- True 
     '''
 
@@ -168,15 +168,17 @@ def main():
 
 
         #play again bonus 
-        play_again = input("Would you like to play again?: y/n ").lower()
-        if play_again == "y": 
-            clear_board(board) #using cb function 
-        elif play_again == "n": 
-            print("Goodbye, thanks for playing!")
-            game = False
-            break 
-        else: 
-            print("Invlaid response, please choose between y and n")
+        while True:
+            play_again = input("Would you like to play again?: y/n ").lower()
+            if play_again == "y": 
+                clear_board(board) #using cb function
+                break 
+            elif play_again == "n": 
+                print("Goodbye, thanks for playing!")
+                game = False
+                break 
+            else: 
+                print("Invalid response, please choose between y and n")
 
     
                 

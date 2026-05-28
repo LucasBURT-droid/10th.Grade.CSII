@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=1200&q=80') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center;
+      font-family: sans-serif;
+    }
+    .card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      width: 100%; max-width: 420px;
+      backdrop-filter: blur(12px);
+    }
+    h1 { color: #fff; font-size: 24px; font-weight: 500; margin-bottom: 4px; }
+    p { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 1.5rem; }
+    label { display: block; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+    input, select {
+      width: 100%; background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 8px;
+      color: #fff; font-size: 15px; padding: 10px 14px;
+      margin-bottom: 1rem; outline: none;
+    }
+    select option { background: #1a1a1a; }
+    button {
+      width: 100%; background: #fff; color: #111;
+      border: none; border-radius: 8px;
+      font-size: 15px; font-weight: 500; padding: 12px;
+      cursor: pointer; margin-top: 4px;
+    }
+    hr { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Audi Experience</h1>
+    <p>Tell us about yourself</p>
+
+    <form action="/submit" method="POST">
+      <label for="fname">First name</label>
+      <input type="text" id="fname" name="fname" placeholder="e.g. Lucas">
+      <label for="lname">Last name</label>
+      <input type="text" id="lname" name="lname" placeholder="e.g. Burt">
+      <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+
+    <form action="/car" method="POST">
+      <label for="cars">Choose a car</label>
+      <select id="cars" name="cars">
+        <option value="volvo">Volvo</option>
+        <option value="bmw">BMW</option>
+        <option value="fiat">Fiat</option>
+        <option value="audi">Audi</option>
+      </select>
+      <button type="submit">Select</button>
+    </form>
+  </div>
+</body>
+</html>
